@@ -1,0 +1,20 @@
+@baseUrl = http://localhost:3333
+
+# Listar tarefas
+GET {{baseUrl}}3333/api/tasks
+###
+# Criar uma tarefa com data limite
+POST {{baseUrl}}/api/tasks
+Content-Type: application/json
+{
+"title": "Estudar Fastify",
+"dueDate": "2026-09-20"
+}
+###
+# Marcar como concluída (troque 1 pelo id retornado)
+PATCH {{baseUrl}}/api/tasks/11
+Content-Type: application/json
+{"completed": true}
+###
+# Excluir
+DELETE {{baseUrl}}/api/tasks/11
