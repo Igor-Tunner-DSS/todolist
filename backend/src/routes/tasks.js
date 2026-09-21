@@ -1,4 +1,4 @@
-import {pool} from './db.js';
+import {pool} from '../db.js';
 
 const SELECT_FIELDS = 'id, title, description, completed, due_date, created_at';
 export default async function taskRoutes(app) {
