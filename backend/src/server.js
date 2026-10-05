@@ -6,7 +6,7 @@ import taskRoutes from './routes/tasks.js';
 const app = Fastify({ logger: true });
 
 await app.register(cors, {
-    origin: process.env.CORS_ORIGIN || 'http://localost:5173'
+    origin: process.env.CORS_ORIGIN || 'http://localhost:5173'
 });
 
 app.get('/health', async () => ({status: 'ok'}));
