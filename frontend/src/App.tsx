@@ -37,9 +37,9 @@ export default function App() {
   const total = tasks.length, completed = tasks.filter(t => t.completed).length;
   const replace = (t: Task) => setTasks(p => p.map(x => (x.id === t.id ? { ...x, ...t } : x)));
   const toggleTask = async (t: Task) => { try { replace(await api.updateTask(t.id, { completed: !t.completed })); } catch (e) { fail(e); } };
-  const save = async (title: string, due: string | null) => {
+  const save = async (title: string, due: string | null, description: string) => {
     if (modal?.task) replace(await api.updateTask(modal.task.id, { title, dueDate: due }));
-    else { const t = await api.createTask(title, due); setTasks(p => [...p, t]); }
+    else { const t = await api.createTask(title, due, description); setTasks(p => [...p, t]); }
     setModal(null);
   };
   const confirmDel = async () => { if (!del) return; try { await api.deleteTask(del.id); setTasks(p => p.filter(x => x.id !== del.id)); } catch (e) { fail(e); } setDel(null); };
