@@ -1,9 +1,16 @@
 import express from 'express';
-import 'dotenv/config';
 import morgan from 'morgan'; // alternativa do Express para o logger do Fastify
 import cors from 'cors';
 import router from './routes/tasks-express.js';
+import * as dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+import path from 'path';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({
+    path: path.resolve(__dirname, '../.env')
+})
 const app = express({});
 app.use(express.json())
 app.use(morgan('dev'));

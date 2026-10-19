@@ -9,7 +9,7 @@ export default function TaskItem({ task, showDate, selected, onToggle, onEdit, o
       <button type="button" role="checkbox" aria-checked={task.completed} aria-label={`Concluir: ${task.title}`} className="check" onClick={() => onToggle(task)}>
         <CheckIcon />
       </button>
-      <span className="title" title={task.title}>{task.title}</span>
+      <span className="title" title={task.description ?? task.title}>{task.title}</span>
       {late && <span className="badge" tabIndex={0} aria-label="Em atraso"><ClockIcon /><span>Em atraso</span></span>}
       {showDate && task.due_date && <span className="date">{fmtShort(task.due_date)}</span>}
       <span className="actions">

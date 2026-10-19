@@ -1,8 +1,15 @@
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
-import 'dotenv/config';
+import * as dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+import path from 'path';
 import taskRoutes from './routes/tasks.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({
+    path: path.resolve(__dirname, '../.env')
+})
 const app = Fastify({ logger: true });
 
 await app.register(cors, {

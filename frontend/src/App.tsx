@@ -38,7 +38,7 @@ export default function App() {
   const replace = (t: Task) => setTasks(p => p.map(x => (x.id === t.id ? { ...x, ...t } : x)));
   const toggleTask = async (t: Task) => { try { replace(await api.updateTask(t.id, { completed: !t.completed })); } catch (e) { fail(e); } };
   const save = async (title: string, due: string | null, description: string) => {
-    if (modal?.task) replace(await api.updateTask(modal.task.id, { title, dueDate: due }));
+    if (modal?.task) replace(await api.updateTask(modal.task.id, { title, dueDate: due, description: description }));
     else { const t = await api.createTask(title, due, description); setTasks(p => [...p, t]); }
     setModal(null);
   };
