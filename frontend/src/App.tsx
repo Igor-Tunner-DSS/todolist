@@ -98,8 +98,8 @@ export default function App() {
             );
           })}
         </section>
-        <section className="someday" aria-label="Someday">
-          <h2>Someday</h2>
+        <section className="someday" aria-label="Outros">
+          <h2>Outros</h2>
           <ul>{someday.map(t => item(t))}</ul>
         </section>
       </main>

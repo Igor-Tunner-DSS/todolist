@@ -14,7 +14,7 @@ export default function TaskModal({ task, defaultDate, onClose, onSubmit }: P) {
     try { await onSubmit(title.trim(), due || null); } catch (x) { setErr((x as Error).message); setBusy(false); }
   };
   return (
-    <Modal title={task ? 'Edit Task' : 'Create Task'} onClose={onClose}>
+    <Modal title={task ? 'Editar Tarefa' : 'Criar Tarefa'} onClose={onClose}>
       <form onSubmit={submit} noValidate>
         <label htmlFor="f-title">Título</label>
         <input id="f-title" value={title} onChange={e => { setTitle(e.target.value); setErr(''); }} aria-invalid={!!err && !title.trim()} aria-describedby="f-err" className={err && !title.trim() ? 'invalid' : ''} placeholder="O que precisa ser feito?" autoComplete="off" />
