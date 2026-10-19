@@ -65,6 +65,7 @@ export default function App() {
   const { y, m } = ym;
   const go = (d: number) => setYm(({ y, m }) => { const n = new Date(y, m + d, 1); return { y: n.getFullYear(), m: n.getMonth() }; });
   const today = todayISO();
+  const thisMonth = monthTitle(y, m).charAt(0).toUpperCase() + monthTitle(y, m).slice(1);
   const days = Array.from({ length: daysIn(y, m) }, (_, i) => i + 1);
   const someday = sorted.filter(t => !t.due_date);
   const item = (t: Task, showDate = false) => <TaskItem key={t.id} task={t} showDate={showDate} selected={sel === t.id} onSelect={() => setSel(t.id)} onToggle={toggleTask} onEdit={t => setModal({ task: t })} onDelete={setDel} />;
@@ -72,7 +73,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="top">
-        <div><h1>{monthTitle(y, m)}<span className="season"><SeasonIcon season={seasonOf(m)} /></span></h1>
+        <div><h1>{thisMonth}<span className="season"><SeasonIcon season={seasonOf(m)} /></span></h1>
           <p className="counts" aria-live="polite"><strong>{total}</strong> tarefas · <strong>{completed}</strong> concluídas</p></div>
         <div className="controls">
           <label className="search"><SearchIcon /><span className="sr">Buscar tarefas</span><input ref={searchRef} type="search" value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar" /></label>

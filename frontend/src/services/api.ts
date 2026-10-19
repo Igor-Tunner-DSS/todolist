@@ -1,6 +1,7 @@
 import type { Task, TaskList } from '../types';
 const BASE = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? '';
 async function req<T>(path: string, init?: RequestInit): Promise<T> {
+  console.log(BASE + path)
   const res = await fetch(BASE + path, { headers: { 'Content-Type': 'application/json' }, ...init });
   if (!res.ok) throw new Error(`Erro ${res.status} ao falar com o servidor`);
   return res.status === 204 ? (undefined as T) : res.json().catch(() => undefined as T);

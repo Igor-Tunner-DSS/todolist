@@ -8,13 +8,14 @@ const app = express({});
 app.use(express.json())
 app.use(morgan('dev'));
 app.use(cors({
-    origin: process.env.CORS_ORIGIN || 'http://localost:5173'
+    origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+    methods: ['GET', 'DELETE', 'POST', 'PATCH']
 }));
 
 app.get('/health', async (req, res) => (res.send({status: 'ok'})));
 app.use('/', router);
 
-const port = Number(process.env.PORT) || 3333;
+const port = Number(process.env.PORT) || 3000;
 
 try {
     app.listen(port, 'localhost', () => {

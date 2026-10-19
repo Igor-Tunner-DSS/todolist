@@ -6,14 +6,15 @@ import taskRoutes from './routes/tasks.js';
 const app = Fastify({ logger: true });
 
 await app.register(cors, {
-    origin: process.env.CORS_ORIGIN || 'http://localhost:5173'
+    origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+    methods: ['GET', 'PATCH', 'DELETE', 'POST']
 });
 
 app.get('/health', async () => ({status: 'ok'}));
 
 await app.register(taskRoutes);
 
-const port = Number(process.env.PORT) || 3333;
+const port = Number(process.env.PORT) || 3000;
 
 try {
     await app.listen({ port, host: '0.0.0.0' });
