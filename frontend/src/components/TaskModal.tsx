@@ -20,6 +20,13 @@ export default function TaskModal({ task, defaultDate, onClose, onSubmit }: P) {
         <input id="f-title" value={title} onChange={e => { setTitle(e.target.value); setErr(''); }} aria-invalid={!!err && !title.trim()} aria-describedby="f-err" className={err && !title.trim() ? 'invalid' : ''} placeholder="O que precisa ser feito?" autoComplete="off" />
         <label htmlFor="f-due"><CalendarIcon /> Data (opcional)</label>
         <div className="row"><input id="f-due" type="date" value={due} onChange={e => setDue(e.target.value)} />{due && <button type="button" className="ghost" onClick={() => setDue('')}>Remover data</button>}</div>
+        {task?.description && (
+          <>
+            <label>Detalhes</label>
+            <pre className="desc" tabIndex={0}>{task.description}</pre>
+          </>
+        )}
+        {task?.source === 'google' && <p className="hint">Importada do Google Calendar. Suas alterações ficam só aqui e nunca são enviadas ao Google; se o evento mudar lá, a tarefa é atualizada.</p>}
         <p id="f-err" className="err" role="alert">{err}</p>
         <footer><button type="button" className="ghost" onClick={onClose}>Cancelar</button><button type="submit" className="primary" disabled={busy}>{busy ? 'Salvando…' : task ? 'Salvar' : 'Criar'}</button></footer>
       </form>

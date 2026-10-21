@@ -26,3 +26,12 @@ export const SeasonIcon = ({ season }: { season: Season }) => {
   }[season];
   return <I size={26} label={label}>{g}</I>;
 };
+// Google Calendar: ícone próprio (calendário com "31" estilizado), em traço, que herda a cor do tema.
+export const GoogleCalendarIcon = ({ size = 13 }: { size?: number }) => <I size={size}><rect x="3.500" y="4.500" width="17" height="16" rx="2.500" /><path d="M3.500 9.500h17M8 3v3M16 3v3" /><path d="M9.500 13.500h1.500v4M13.500 13.500h2.500M13.500 17.500h2.500M14 15.500h2" /></I>;
+export const SyncIcon = () => <I size={16}><path d="M20 11a8 8 0 0 0-14-4.500L4 9" /><path d="M4 4v5h5" /><path d="M4 13a8 8 0 0 0 14 4.500L20 15" /><path d="M20 20v-5h-5" /></I>;
+export const LogoutIcon = () => <I><path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4" /><path d="M10 8l-4 4 4 4M6 12h10" /></I>;
+export const ListCheckIcon = () => <I size={16}><path d="M4 7l1.500 1.500L8 6M4 13l1.500 1.500L8 12M4 19l1.500 1.500L8 18" /><path d="M12 7h8M12 13h8M12 19h8" /></I>;
+export const UnlinkIcon = () => <I size={16}><path d="M9 15 6.500 17.500a3.500 3.500 0 0 1-5-5L4 10M15 9l2.500-2.500a3.500 3.500 0 0 1 5 5L20 14" /><path d="M8 8 5 5M16 16l3 3" /></I>;
+export const PlugIcon = () => <I size={16}><path d="M9 3v5M15 3v5M7 8h10v3a5 5 0 0 1-10 0V8ZM12 16v5" /></I>;
+export const AlertIcon = () => <I size={16}><path d="M12 4 3 19h18L12 4Z" /><path d="M12 10v4M12 17v.01" /></I>;
+export const CheckCircleIcon = () => <I size={16}><circle cx="12" cy="12" r="8.500" /><path d="m8.500 12.200 2.500 2.500 4.500-5" /></I>;
